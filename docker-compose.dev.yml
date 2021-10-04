@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+    debiganj_db:
+        restart: always
+        image: postgres:latest
+        environment:
+            POSTGRES_USER: debiganj
+            POSTGRES_PASSWORD: debiganj@pAsss
+            POSTGRES_DB: debiganj
+        ports:
+            - "5432:5432"
+    web:
+        restart: always
+        build: .
+        command: python3 manage.py runserver 0.0.0.0:8000
+        env_file: .env.dev
+        volumes:
+            - .:/app
+        ports:
+            - "8000:8000"
+        depends_on:
+            - debiganj_db
+        links:
+            - debiganj_db
