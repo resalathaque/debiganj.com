@@ -1,0 +1,8 @@
+Django==3.1.6
+psycopg2==2.8.5
+gunicorn==20.0.0
+Pillow==7.1.2
+sorl-thumbnail
+boto3==1.12.26
+django-storages==1.10.1
+django-crispy-forms
